@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .gallery {
+            width : 100px; height: 100px; border: solid 1px black;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <img src = "images/wind.jpg" width="250px" height="250px" id = "mainImage">
+    </div>
+    <div onclick="changeImages(event)">
+        <img src = "images/sky.jpg" class = "gallery">
+        <img src = "images/stones.jpg" class = "gallery">
+        <img src = "images/sweethome.jpg" class = "gallery">
+        <img src = "images/wind.jpg" class = "gallery">
+    </div>
+    <script type = 'text/javascript'>
+        function changeImages(event) {
+            let ele = event.target;
+            if(ele.tagName == 'IMG') {
+                let image = document.getElementById('mainImage');
+                image.src = ele.src;
+            }
+        }
+    </script>
+</body>
+</html>
