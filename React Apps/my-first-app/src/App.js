@@ -1,23 +1,29 @@
-import React, {Component} from 'react';
+import React, {Component, useState} from 'react';
 import './App.css';
-import Button from './Button';
-
-class Clock extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {date : new Date()}
+import Form from './Form'
+function CounterComponent() {
+  // initializing the state & creating a function that updates the state
+  const [counter, setCounter] = useState(1);
+  function addCounter() {
+    setCounter(counter + 1);
   }
-  
-  render() {
-    return (<div>
-      <p>Timer is: {this.state.date.toLocaleTimeString()}</p>
-    </div>)
-  }
+  return (<div>
+    <h2>Simple counter state from function component</h2>
+    <p>Counter: {counter}</p>
+    <button onClick = {addCounter} className = 'btn btn-primary'>Add Counter</button>
+  </div>)
 }
+
 function App() {
-  
   return (<div className = 'container-fluid'>
-      <Clock />
+    <div className = 'row'>
+      <div className = 'col-4'>
+        <Form />
+      </div>
+      <div className = 'col-4'>
+        <CounterComponent />
+      </div>
+    </div>
     </div>
   );
 }
