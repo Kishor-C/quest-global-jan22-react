@@ -25,11 +25,25 @@ export class ReadAllEmployees extends React.Component {
                     {this.state.employees.map((emp, index) => 
                         <tr key = {index}>
                             <td>{index + 1}</td><td>{emp.id}</td><td>{emp.name}</td><td>{emp.salary}</td>
-                            <td><button className = 'btn btn-danger'>Delete</button></td>
+                            <td><EmployeeDelete id = {emp.id}/></td>
                         </tr>)}
                 </tbody>
             </table>
         </div>)
+    }
+}
+
+export class EmployeeDelete extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    handleClick = (event) => {
+        axios.delete('http://localhost:9090/employee/'+this.props.id)
+        .then(response => console.log(response));
+        
+    }
+    render() {
+        return (<button className = 'btn btn-danger' onClick = {this.handleClick}>Delete</button>)
     }
 }
 export class StoreEmployee extends React.Component {
@@ -53,19 +67,22 @@ export class StoreEmployee extends React.Component {
             <form onSubmit = {this.handleSubmit}>
                 <div className = 'form-group'>
                     <label>
-                        Enter Id <input type = 'number' value = {this.state.id} onChange = {(e) => this.setState({id: e.target.value})}
+                        Enter Id <input type = 'number' value = {this.state.id} 
+                        onChange = {(e) => this.setState({id: e.target.value})}
                         autoComplete = 'off' className = 'form-control'/>
                     </label>
                 </div>
                 <div className = 'form-group'>
                     <label>
-                        Enter Name <input type = 'text' value = {this.state.name} onChange = {(e) => this.setState({name: e.target.value})}
+                        Enter Name <input type = 'text' value = {this.state.name} 
+                        onChange = {(e) => this.setState({name: e.target.value})}
                         autoComplete = 'off' className = 'form-control'/>
                     </label>
                 </div>
                 <div className = 'form-group'>
                     <label>
-                        Enter Salary <input type = 'number' value = {this.state.salary} onChange = {(e) => this.setState({salary: e.target.value})}
+                        Enter Salary <input type = 'number' value = {this.state.salary} 
+                        onChange = {(e) => this.setState({salary: e.target.value})}
                         autoComplete = 'off' className = 'form-control'/>
                     </label>
                 </div>
