@@ -17,6 +17,7 @@ function App() {
       <div>
         <button onClick = {increment} className = 'btn btn-primary'>Add</button> &nbsp;
         <button onClick = {decrement} className = 'btn btn-primary'>Remove</button>
+        
       </div>
     </div>
   );
